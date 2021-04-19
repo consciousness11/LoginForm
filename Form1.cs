@@ -25,13 +25,14 @@ namespace LoginForm
                 {
                     using (SqlConnection connection = new SqlConnection(@"Data Source=.\sqlexpress01;Initial Catalog=studentinfo;Integrated Security=True;"))
                     {
+                       // Cipher cip = new Cipher();
                         const string query = "select * from UserDb where username = @username and password = @password";
                         using (SqlCommand sqlCmd= new SqlCommand(query,connection))
                         {
                             sqlCmd.Parameters.Add(new SqlParameter("@username", SqlDbType.VarChar));
                             sqlCmd.Parameters["@username"].Value = textBoxUser.Text;
                             sqlCmd.Parameters.Add(new SqlParameter("@password", SqlDbType.VarChar));
-                            sqlCmd.Parameters["@password"].Value = textBoxPass.Text;
+                            sqlCmd.Parameters["@password"].Value = Cipher.Encrypt( textBoxPass.Text,4);
                             try
                             {
                                 connection.Open();

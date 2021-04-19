@@ -67,6 +67,7 @@ namespace LoginForm
             // 
             this.textBoxPass.Location = new System.Drawing.Point(160, 82);
             this.textBoxPass.Name = "textBoxPass";
+            this.textBoxPass.PasswordChar = '*';
             this.textBoxPass.Size = new System.Drawing.Size(100, 20);
             this.textBoxPass.TabIndex = 3;
             // 
